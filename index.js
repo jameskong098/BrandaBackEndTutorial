@@ -1,11 +1,14 @@
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
+const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
 
 const app = express();
 const PORT = 3000;
 
 let newShip = require("./routes/newShip");
+const DB = require("./db");
+
+app.listen(PORT, () => console.info("Server has started on", PORT));
 
 // on every request, parse the request body using this library.
 app.use(bodyParser.json());
