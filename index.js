@@ -6,8 +6,10 @@ const app = express();
 const PORT = 3000;
 
 let newShip = require("./routes/newShip");
-let getShip = require("./routes/getShip");
+let getByName = require("./routes/getByName");
 let getByChar = require("./routes/getByChar");
+let updateShip = require("./routes/updateShip");
+
 const DB = require("./db");
 
 app.listen(PORT, () => console.info("Server has started on", PORT));
@@ -18,6 +20,8 @@ app.use(bodyParser.json());
 // note that the entire URL including the one declared in the file must match.
 app.use("/",newShip);
 
-app.use("/",getShip);
+app.use("/",getByName);
 
 app.use("/",getByChar);
+
+app.use("/",updateShip);

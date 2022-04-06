@@ -5,9 +5,9 @@ let Ship = require("../models/Ship");
 /**
  * tell Express.js that when it receives a GET request at the URL /newShip/, to do this code.
  */
-router.get("/getShip/secondaryBattery", function(req, res){
+router.patch("/updateShip", function(req, res){
   // look up documents in MongoDB by name.
-  Ship.find({secondaryBattery: req.body.secondaryBattery}, function(error,doc){
+  Ship.findOneAndUpdate({name: req.body.name}, function(error,doc){
     // if there was an error
     if(error){
       console.error("Error finding ship",error);
@@ -17,9 +17,9 @@ router.get("/getShip/secondaryBattery", function(req, res){
     else if(!doc){
       res.status(404).send(error);
     }
-    // a document was found, return it.
+    // a document was found
     else{
-      res.send(doc);
+      return {launched: req.body.launched};
     }
   });
 });
