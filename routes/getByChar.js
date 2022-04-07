@@ -6,7 +6,7 @@ let Ship = require("../models/Ship");
  * tell Express.js that when it receives a GET request at the URL /newShip/, to do this code.
  */
 router.get("/getShip/secondaryBattery", function(req, res){
-  // look up documents in MongoDB by name.
+  // look up documents in MongoDB by secondaryBattery.
   Ship.find({secondaryBattery: req.body.secondaryBattery}, function(error,doc){
     // if there was an error
     if(error){
